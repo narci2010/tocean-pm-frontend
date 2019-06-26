@@ -1,0 +1,11 @@
+{
+  "host": "http://devos.toceansoft.com:7300",
+  "output": "src/api",
+  "template": "./mock",
+  "projects": [
+    {
+      "id": "5cfe30523505c600844d19a7",
+      "name": "devos"
+    }
+  ]
+}
