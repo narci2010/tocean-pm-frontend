@@ -198,3 +198,13 @@ export function objClone(jsonObj: any) {
     return jsonObj
   }
 }
+// dump对象
+export const dumpObject = (obj: any) => {
+  const censor = value => {
+    if (typeof value === 'function') {
+      return Function.prototype.toString.call(value)
+    }
+    return value
+  }
+  return JSON.stringify(obj, censor, 4)
+}

@@ -13,5 +13,6 @@ function convertRESTAPI(url: string, opts: any) {
 
   return newUrl
 }
-
+// Spring MVC @RequestBody 前端就不用stringify转换，否则需要转换
+// qs.stringify(opts, { allowDots: true, arrayFormat: 'repeat'}
 export { convertRESTAPI }

@@ -7,7 +7,7 @@ function {{$$.convertMethod(mock)}}(opts: any= "") {
   return request({
     method: '{{mock.method}}',
     url: <% if($$.isREST(mock.url)) {%>convertRESTAPI('{{mock.url}}', opts)<%} else {%> '{{mock.url}}'<% } %>,
-    <% if(mock.method=='get') {%>params: opts<%} else {%>data: opts<% } %>
+    <% if(mock.method!='post' && mock.method!='put') {%>params: opts<%} else {%>data:  opts<% } %>
   });
 }
 

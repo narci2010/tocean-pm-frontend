@@ -6,10 +6,24 @@
     <el-input placeholder="请输入密码"
               v-model="data.password"
               show-password></el-input>
-    <el-button type="success"
-               icon="el-icon-check"
-               circle
-               @click="testClick"></el-button>
+    <el-row>
+      <el-button type="success"
+                 icon="el-icon-check"
+                 circle
+                 @click="testClick"></el-button>
+      <el-button type="success"
+                 icon="el-icon-check"
+                 circle
+                 @click="testClick2"></el-button>
+    </el-row>
+    <div>
+      <Test></Test>
+    </div>
+    <div>
+      <svg-icon icon-class="add" />
+      <svg-icon icon-class="drag" />
+      <svg-icon icon-class="safe_line" />
+    </div>
   </div>
 </template>
 <script lang="ts" src="./login.ts"></script>
