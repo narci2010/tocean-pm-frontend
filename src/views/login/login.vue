@@ -24,7 +24,34 @@
       <svg-icon icon-class="drag" />
       <svg-icon icon-class="safe_line" />
     </div>
+
+    <div>
+
+      <input id="file"
+             ref="file"
+             type="file"
+             style="opacity: 0"
+             multiple
+             @change="uploadFileChange">
+      <el-button size="small"
+                 type="primary"
+                 @click="fileTrigger">
+        选取文件
+      </el-button>
+      <el-button @click="isShowImportDialog = false">
+        取消
+      </el-button>
+      <el-button style="margin-left: 10px;"
+                 size="small"
+                 type="success"
+                 @click="submitUpload">
+        上传到服务器
+      </el-button>
+
+    </div>
+
   </div>
+
 </template>
 <script lang="ts" src="./login.ts"></script>
 <style lang="scss">

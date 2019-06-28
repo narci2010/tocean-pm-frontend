@@ -41,6 +41,16 @@ service.interceptors.response.use(
     // code == 60204: account or password is incorrect
     // You can change this part for your own usage.
     const res = response.data
+    if (res === undefined || res.code === undefined) {
+      console.log(
+        '返回数据格式不符合框架规定，请检查mock数据真实性或后台接口返回数据是符合公司约定规则。'
+      )
+      Message({
+        message: '后台返回数据格式不符合公司规范。',
+        type: 'error',
+        duration: 5 * 1000
+      })
+    }
     if (res.code === 0 || res.code === 200) {
       return res
     } else {
@@ -65,25 +75,43 @@ service.interceptors.response.use(
           })
         })
       }
-      // for (const key in res) {
-      //   console.log(res.additionalProp1)
-      // }
-      if (response.status === 200) {
-        console.log(
-          '返回数据格式不符合框架规定，请检查mock数据真实性或后台接口返回数据是符合公司约定规则。'
-        )
-      } else {
-        return Promise.reject(new Error('error with code: ' + res.code))
-      }
+
+      // return Promise.reject(new Error('error with code: ' + response.status))
     }
   },
   error => {
+    // for (const key in error.response) {
+    //   console.log(key)
+    // }
+    // console.log(error)
+    // let errorStr = error.toString()
+    // console.log(errorStr)
+    let msg: string
+
+    if (error.response.status >= 100 && error.response.status < 200) {
+      msg = '需要请求者继续执行操作。'
+    } else if (error.response.status >= 300 && error.response.status < 400) {
+      msg = '重定向，需要进一步的操作以完成请求。'
+    } else if (error.response.status >= 400 && error.response.status < 500) {
+      msg = '客户端错误，请求包含语法错误或无法完成请求。'
+      if (error.response.status === 404) {
+        msg = '访问资源（接口）不存在。'
+      } else if (error.response.status === 403) {
+        msg = '服务器禁止跨域访问。'
+      } else if (error.response.status === 401) {
+        msg = '服务器禁止访问该资源。'
+      }
+    } else if (error.response.status >= 500 && error.response.status < 600) {
+      msg = '服务器错误，服务器在处理请求的过程中发生了错误。'
+    } else {
+      msg = '未知错误，请联系管理员。'
+    }
+    console.log(error.message)
     Message({
-      message: error.msg,
+      message: msg,
       type: 'error',
       duration: 5 * 1000
     })
-    return Promise.reject(error)
   }
 )
 
