@@ -35,7 +35,9 @@ import { Getter, Action } from "vuex-class"
 import { ${capPirName}Data } from '@/types/views/${dirName}.interface'
 // import {  } from "@/components" // 组件
 @Component({})
-export default class About extends Vue {
+export default class ${capPirName} extends Vue {
+  // ${capPirName} 可以修改成您想要的名称
+  // [x: string]: any
   // Getter
   // @Getter author
   

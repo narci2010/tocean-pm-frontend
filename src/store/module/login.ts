@@ -26,8 +26,14 @@ const actions: ActionTree<LoginState, any> = {
     commit('UPDATE_STATE', data)
   },
   GET_DATA_ASYN({ commit, state: LoginState }) {
-    let params = {}
-    params['paramKey'] = '1'
+    let params: any = {}
+    params.paramKey = '1'
+    //
+    logger.debug('test', 'this.a', 123)
+    logger.info('test', 'this.b')
+    logger.warn('test')
+    logger.error('test')
+    logger.fatal('test')
     devos
       .api_cache2_get(params)
       .then((response: any) => {

@@ -56,15 +56,15 @@ export default class About extends Vue {
   /** 响应鼠标点击事件 */
   testClick(): void {
     // 数据不需要多模块共享，直接在自己的ts中调用后台api
-    let testObject = {}
+    let testObject: any = {}
     let path = { lisenceId: 168 }
-    testObject['path'] = path
-    testObject['name'] = 'test'
-    testObject['age'] = 25
-    testObject['admin'] = true
+    testObject.path = path
+    testObject.name = 'test'
+    testObject.age = 25
+    testObject.admin = true
     let anOther = { color: 'red', height: 15.1 }
-    testObject['anOther'] = anOther
-    testObject['nums'] = [101, 102]
+    testObject.anOther = anOther
+    testObject.nums = [101, 102]
 
     devos
       .api_testObjects_post(testObject, testObject)
@@ -84,6 +84,11 @@ export default class About extends Vue {
   }
   created() {
     //
+    this.$log.debug('test', 'this.a', 123)
+    this.$log.info('test', 'this.b')
+    this.$log.warn('test')
+    this.$log.error('test')
+    this.$log.fatal('test')
   }
 
   activated() {
