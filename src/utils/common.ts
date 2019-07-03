@@ -2,8 +2,8 @@
  * @Description: 公共函数
  * @Author: asheng
  * @Date: 2018-12-07 11:36:27
- * @LastEditors: asheng
- * @LastEditTime: 2018-12-12 15:22:04
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-07-03 19:10:44
  */
 
 import Cookies from 'js-cookie'
@@ -70,6 +70,7 @@ export const getDate = (fmt: any) => {
     'm+': date.getMinutes(), // 分
     's+': date.getSeconds(), // 秒
     'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+    // tslint:disable-next-line:object-literal-key-quotes
     S: date.getMilliseconds() // 毫秒
   }
   if (/(y+)/.test(fmt)) {
@@ -104,6 +105,7 @@ export const formatDate = (date: any, fmt: string) => {
     'm+': date.getMinutes(), // 分
     's+': date.getSeconds(), // 秒
     'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
+    // tslint:disable-next-line:object-literal-key-quotes
     S: date.getMilliseconds() // 毫秒
   }
   if (/(y+)/.test(fmt)) {

@@ -24,7 +24,7 @@
       <svg-icon icon-class="drag" />
       <svg-icon icon-class="safe_line" />
     </div>
-
+    <br><br><br>
     <div>
 
       <input id="file"

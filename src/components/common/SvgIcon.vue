@@ -1,11 +1,14 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true">
-    <use :xlink:href="iconName"/>
+  <svg :class="svgClass"
+       aria-hidden="true">
+    <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script>
 export default {
+  /*eslint no-invalid-this: "error"*/
+  /*eslint-env es6*/
   name: 'SvgIcon',
   props: {
     iconClass: {

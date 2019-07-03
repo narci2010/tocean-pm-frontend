@@ -86,9 +86,13 @@ service.interceptors.response.use(
     // console.log(error)
     // let errorStr = error.toString()
     // console.log(errorStr)
-    let msg: string
-
-    if (error.response.status >= 100 && error.response.status < 200) {
+    let msg: string = '未知错误，请联系管理员。'
+    if (
+      error.response === undefined &&
+      error.message.trim() === 'Network Error'
+    ) {
+      msg = '网络不通或服务器未正常启动。'
+    } else if (error.response.status >= 100 && error.response.status < 200) {
       msg = '需要请求者继续执行操作。'
     } else if (error.response.status >= 300 && error.response.status < 400) {
       msg = '重定向，需要进一步的操作以完成请求。'
@@ -103,10 +107,8 @@ service.interceptors.response.use(
       }
     } else if (error.response.status >= 500 && error.response.status < 600) {
       msg = '服务器错误，服务器在处理请求的过程中发生了错误。'
-    } else {
-      msg = '未知错误，请联系管理员。'
     }
-    console.log(error.message)
+    // console.log(error.message)
     Message({
       message: msg,
       type: 'error',

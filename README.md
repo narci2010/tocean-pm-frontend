@@ -54,8 +54,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## step1:安装 CLI
 
-- npm install -g easy-mock-cli
+- npm install -g easy-mock-module-cli
+- npm update easy-mock-module-cli -g
 
 ## step2:初始化 api
 
-- easymock init .
+- toceanmock init .

@@ -19,6 +19,7 @@ switch (process.env.NODE_ENV) {
 }
 
 // export const baseUrl: string = 'https://devos.toceansoft.com' // 请求域名
+// 全局设置后台api地址
 export const baseUrl: string = {
   mock: 'http://devos.toceansoft.com:7300/mock/5d146c6b3505c600844d1a74/devos2', // mock环境
   dev: 'http://192.168.1.188', // 开发环境
