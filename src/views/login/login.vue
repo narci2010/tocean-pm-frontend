@@ -26,6 +26,15 @@
     </div>
     <br><br><br>
     <div>
+      <el-alert title="成功提示的文案"
+                type="success">
+      </el-alert>
+      <el-alert :title="$t('navbar.title')"
+                type="success">
+      </el-alert>
+      直接在html内容中的使用：{{$t('navbar.title')}}
+    </div>
+    <div>
 
       <input id="file"
              ref="file"

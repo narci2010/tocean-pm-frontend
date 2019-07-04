@@ -6,12 +6,19 @@ import '@/assets/scss/common.scss'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/icons'
-import VueLogger from 'vuejs-logger'
-
 // import SvgIcon from '_c/common/SvgIcon.vue' // svg组件
+import VueLogger from 'vuejs-logger'
+import VueI18n from 'vue-i18n'
+// Internationalization
+import i18n from './lang'
+import { setItem } from '@/utils/common'
 
 Vue.config.productionTip = false
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
+Vue.use(ElementUI, {
+  size: 'medium', // set element-ui default size
+  i18n: (key, value) => i18n.t(key, value)
+})
 
 // 全局注册
 // Vue.component('svg-icon', SvgIcon)
@@ -34,16 +41,9 @@ Vue.use(VueLogger, options)
 const instance = new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
 
-// instance.$log.debug('test2222222')
-// console.logger = instance.$log
-
-// tslint:disable-next-line:no-var-keyword
-// var logger = () => {
-//   console.log('aaaa')
-// }
-// logger()
-
 window.logger = instance.$log
+setItem('language', 'en') // 设置语言为中文 en则英文

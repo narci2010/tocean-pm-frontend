@@ -1,3 +1,11 @@
+/*
+ * @Description: axios封装
+ * @Author: Narci.Lee(narci2010@qq.com)
+ * @Date: 2019-06-11 10:39:04
+ * @LastEditTime: 2019-07-04 14:26:07
+ * @LastEditors: Please set LastEditors
+ */
+
 import axios from 'axios'
 import { Message, MessageBox } from 'element-ui'
 import { getToken } from '@/utils/auth'
@@ -14,9 +22,10 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // Add X-Token header to every request, you can add other custom headers here
-    if (getToken() && isUseToken) {
+    const currentToken = getToken()
+    if (currentToken && isUseToken) {
       // 让每个请求携带token-- ['token']为自定义key 请根据实际情况自行修改
-      const token = getToken()
+      const token = currentToken
       config.headers.token = token
       config.withCredentials = false
     }
@@ -108,7 +117,8 @@ service.interceptors.response.use(
     } else if (error.response.status >= 500 && error.response.status < 600) {
       msg = '服务器错误，服务器在处理请求的过程中发生了错误。'
     }
-    // console.log(error.message)
+
+    // console.log('error:' + error.message)
     Message({
       message: msg,
       type: 'error',

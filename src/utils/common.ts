@@ -1,30 +1,50 @@
 /*
- * @Description: 公共函数
- * @Author: asheng
- * @Date: 2018-12-07 11:36:27
+ * @Description: 全局工具类
+ * @Author: Narci.Lee(narci2010@qq.com)
+ * @Date: 2019-06-11 10:39:04
+ * @LastEditTime: 2019-07-04 14:51:31
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2019-07-03 19:10:44
  */
 
 import Cookies from 'js-cookie'
 import { cookieExpires } from '@/utils/config' // cookie保存的天数
 
 /**
- * @Author: asheng
- * @msg: 存取token
- * @param {string} token
+ * @description: 在cookie或本地存储中获取key的值
+ * @param {string} key
+ * @return:
  */
-export const TOKEN_KEY: string = 'token'
-export const setToken = (token: string) => {
-  Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 })
+export const getItem = (key: string) => {
+  if (navigator.cookieEnabled) {
+    return Cookies.get(key)
+  } else if (localStorage !== undefined) {
+    return localStorage.getItem(key)
+  }
+  return false
 }
-export const getToken = () => {
-  const token = Cookies.get(TOKEN_KEY)
-  if (token) {
-    return token
-  } else {
-    // false
-    return true
+/**
+ * @description: 在cookie或本地存储中设置key-value对
+ * @param {string} key
+ * @param {string} value
+ * @return:
+ */
+export const setItem = (key: string, value: string) => {
+  if (navigator.cookieEnabled) {
+    Cookies.set(key, value, { expires: cookieExpires || 1 })
+  } else if (localStorage !== undefined) {
+    localStorage.setItem(key, value)
+  }
+}
+/**
+ * @description: 删除cookie或本地存储中的key-value对
+ * @param {string} key
+ * @return: string
+ */
+export const removeItem = (key: string) => {
+  if (navigator.cookieEnabled) {
+    Cookies.remove(key)
+  } else if (localStorage !== undefined) {
+    localStorage.removeItem(key)
   }
 }
 
