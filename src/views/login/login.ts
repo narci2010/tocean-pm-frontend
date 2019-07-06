@@ -15,6 +15,7 @@ export default class About extends Vue {
 
   // 通过Action装饰很方便访问store中的action
   @Action GET_DATA_ASYN
+
   // data
   data: LoginData = {
     pageName: 'login page',
@@ -90,7 +91,6 @@ export default class About extends Vue {
     this.$log.error('test')
     this.$log.fatal('test')
   }
-
   activated() {
     //
   }

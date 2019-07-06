@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/icons'
 // import SvgIcon from '_c/common/SvgIcon.vue' // svg组件
 import VueLogger from 'vuejs-logger'
-import VueI18n from 'vue-i18n'
+// import VueI18n from 'vue-i18n'
 // Internationalization
 import i18n from './lang'
 import { setItem } from '@/utils/common'
@@ -46,4 +46,4 @@ const instance = new Vue({
 }).$mount('#app')
 
 window.logger = instance.$log
-setItem('language', 'en') // 设置语言为中文 en则英文
+setItem('language', 'zh') // 设置语言为中文 en则英文

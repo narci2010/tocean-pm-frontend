@@ -1,13 +1,16 @@
 import { LoginState } from '@/types/views/login.interface'
 import { GetterTree, MutationTree, ActionTree } from 'vuex'
 import * as devos from '@/api/devos'
+import { setTheme, defaultTheme } from '@/assets/element/theme/setTheme'
 
 const state: LoginState = {
-  author: '三毛'
+  author: '三毛',
+  theme: defaultTheme
 }
 // 强制使用getter获取state
 const getters: GetterTree<LoginState, any> = {
-  author: (state: LoginState) => state.author
+  author: (state: LoginState) => state.author,
+  theme: (state: LoginState) => state.theme
 }
 // 更改state
 const mutations: MutationTree<LoginState> = {
@@ -19,6 +22,9 @@ const mutations: MutationTree<LoginState> = {
       }
       state[key] = data[key]
     }
+  },
+  SET_THEME: (state, theme) => {
+    state.theme = theme
   }
 }
 const actions: ActionTree<LoginState, any> = {
@@ -42,6 +48,10 @@ const actions: ActionTree<LoginState, any> = {
       .catch(response => {
         console.log(response.code)
       })
+  }, // 改变用户主题
+  ChangeTheme({ commit, state }, theme) {
+    commit('SET_THEME', theme)
+    setTheme(theme)
   }
 }
 export default {
