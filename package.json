@@ -38,7 +38,7 @@
     "@types/js-cookie": "^2.2.0",
     "@types/qs": "^6.5.3",
     "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-e2e-cypress": "^3.2.0",
+    "@vue/cli-plugin-e2e-cypress": "^5.0.8",
     "@vue/cli-plugin-typescript": "^3.9.0",
     "@vue/cli-plugin-unit-jest": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
